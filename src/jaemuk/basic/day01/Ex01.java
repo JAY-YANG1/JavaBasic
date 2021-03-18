@@ -1,4 +1,4 @@
-package YJM.Basic.day01;
+package jaemuk.basic.day01;
 /**
  * 
  * 연습문제 실습
