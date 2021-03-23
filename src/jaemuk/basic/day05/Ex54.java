@@ -12,10 +12,13 @@ public class Ex54 {
 		System.out.println(a[0] + " " + a[1] + " " + a[2]);
 		a[1] = a[2];
 		System.out.println(a[0] + " " + a[1] + " " + a[2]);
+		
 
 		int[] sampleArray = new int[10];
 		for (int index = 1; index <= sampleArray.length; index++)
 			sampleArray[index] = 3 * index;
+		
+			
 
 	} // main
 
