@@ -88,7 +88,3 @@ class Goldfish2 extends Animal {
 
     public void swim() { }
 } // Goldfish2
-
-class Person2 {
-
-}
