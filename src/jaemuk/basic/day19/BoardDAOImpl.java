@@ -34,8 +34,8 @@ public class BoardDAOImpl implements BoardDAO{
                              " where bdno = ? ";
     private String thumbSQL = " update board set thumbup = thumbup + 1 " +
                               " where bdno = ? ";
-    private String updateSQL = "";
-    private String deleteSQL = "";
+    private String updateSQL = "update board set title = ?, contents = ? where bdno = ?";
+    private String deleteSQL = "delete from board where bdno = ?";
 
 
     @Override
@@ -120,12 +120,42 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public int updateBoard(BoardVO bvo) {
-        return 0;
+        int cnt = 0;
+
+        try (
+                Connection conn = jdbc.openConn();
+                PreparedStatement pstmt = conn.prepareStatement(updateSQL);
+                ) {
+            pstmt.setString(1, bvo.getTitle());
+            pstmt.setString(2, bvo.getContents());
+            pstmt.setString(3, bvo.getBdno());
+
+            cnt = pstmt.executeUpdate();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return cnt;
     }
 
     @Override
     public int deleteBoard(int bdno) {
-        return 0;
+        int cnt = 0;
+
+        try (
+                Connection conn = jdbc.openConn();
+                PreparedStatement pstmt = conn.prepareStatement(deleteSQL);
+                ) {
+            pstmt.setInt(1, bdno);
+
+            cnt = pstmt.executeUpdate();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return cnt;
     }
 
     @Override

@@ -13,6 +13,7 @@ public class EmployeeVO {
     protected double comm;
     protected String mgrid;
     protected String deptid;
+    protected String regdate;
 
     // 생성자
 
@@ -26,6 +27,20 @@ public class EmployeeVO {
         this.email = email;
         this.phone = phone;
         this.hdate = hdate;
+    }
+
+    public EmployeeVO(String empno, String fname, String lname, String email,
+                      String phone, String hdate, String jobid, int sal, double comm,
+                      String mgrid, String deptid, String regdate) {
+        this(empno, fname, lname, email, phone, hdate);
+        // 이미 정의한 생성자를 호출해서 값들을 초기화함
+
+        this.jobid = jobid;
+        this.sal = sal;
+        this.comm = comm;
+        this.mgrid = mgrid;
+        this.deptid = deptid;
+        this.regdate = regdate;
     }
 
     // setter
@@ -73,6 +88,9 @@ public class EmployeeVO {
         this.deptid = deptid;
     }
 
+    public void setRegdate(String regdate) {
+        this.regdate = regdate;
+    }
 
     // getter
     public String getEmpno() {
@@ -117,6 +135,10 @@ public class EmployeeVO {
 
     public String getDeptid() {
         return deptid;
+    }
+
+    public String getRegdate() {
+        return regdate;
     }
 
     @Override
